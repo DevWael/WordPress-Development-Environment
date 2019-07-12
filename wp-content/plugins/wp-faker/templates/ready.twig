@@ -1,0 +1,22 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+    <h3>Ready to generate content with this config?</h3>
+    <ul>
+        {% for spec in config %}
+            <li>{{ spec|raw }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block footer %}
+    {{ footer|raw }}
+    {% if config_files %}
+        <small>
+            or choose another configuration of yours : 
+            {% for file in config_files %}
+                <a href="index.php?using={{ file }}">{{ file }}</a>
+            {% endfor %}
+        </small>
+    {% endif %}
+{% endblock %}
